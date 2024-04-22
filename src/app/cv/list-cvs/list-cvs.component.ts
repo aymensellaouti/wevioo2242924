@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-cvs',
@@ -12,23 +12,9 @@ import { Router } from '@angular/router';
 export class ListCvsComponent {
   cvs: Cv[] = [];
   router = inject(Router);
-
-  constructor(
-    private toastr: ToastrService,
-    private cvService: CvService
-  ) {
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
-        this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      },
-    });
-    this.toastr.info('Bienvenu dans notre CvTech');
+  acr = inject(ActivatedRoute);
+  constructor() {
+    this.cvs = this.acr.snapshot.data['cvs'];
   }
   showDetails(cv: Cv) {
     this.router.navigate(['cv/list',cv.id]);
