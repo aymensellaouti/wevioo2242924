@@ -46,6 +46,10 @@ import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
 import { ProductsComponent } from './products/products.component';
+import { todoInjectionToken } from './injection Tokens/todo.injection-token';
+import { todoServiceProviderFactory } from './provider factories/todo-service.provider-factory';
+import { LoggerService } from './services/logger.service';
+import { TodoService } from './todo/service/todo.service';
 
 @NgModule({
   declarations: [
@@ -83,7 +87,7 @@ import { ProductsComponent } from './products/products.component';
     TestHttpComponent,
     RhComponent,
     UserListComponent,
-    ProductsComponent
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +97,9 @@ import { ProductsComponent } from './products/products.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    AuthInterceptorProvider,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

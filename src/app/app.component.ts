@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { todoInjectionToken } from './injection Tokens/todo.injection-token';
+import { TodoService } from './todo/service/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Starting Advanced Topics';
+  constructor(
+    private todoService: TodoService
+  ) {
+    this.todoService.logTodos();
+  }
 }
