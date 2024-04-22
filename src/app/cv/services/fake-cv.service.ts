@@ -7,7 +7,7 @@ import { API } from '../../../config/api.config';
 @Injectable({
   providedIn: 'root',
 })
-export class CvService {
+export class FakeCvService {
   private cvs: Cv[] = [];
   constructor(private http: HttpClient) {
     this.cvs = [

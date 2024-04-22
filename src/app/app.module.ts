@@ -50,6 +50,10 @@ import { todoInjectionToken } from './injection Tokens/todo.injection-token';
 import { todoServiceProviderFactory } from './provider factories/todo-service.provider-factory';
 import { LoggerService } from './services/logger.service';
 import { TodoService } from './todo/service/todo.service';
+import { CvService } from './cv/services/cv.service';
+import { CONSTANTES } from 'src/config/const.config';
+import { FakeCvService } from './cv/services/fake-cv.service';
+import { OtherLoggerService } from './services/other-logger.service';
 
 @NgModule({
   declarations: [
@@ -98,7 +102,21 @@ import { TodoService } from './todo/service/todo.service';
     HttpClientModule,
   ],
   providers: [
+    {
+      provide: CvService,
+      useClass: CONSTANTES.env == 'production' ? CvService : FakeCvService
+    },
     AuthInterceptorProvider,
+    {
+      provide: 'APP_LOGGER',
+      useClass: LoggerService,
+      multi: true
+    },
+    {
+      provide: 'APP_LOGGER',
+      useClass: OtherLoggerService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent],
 })
