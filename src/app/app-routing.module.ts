@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Route } from "@angular/router";
+import { RouterModule, Route, ROUTES, Routes } from "@angular/router";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
@@ -12,13 +12,21 @@ import { AddCvComponent } from "./cv/add-cv/add-cv.component";
 import { CvComponent } from "./cv/cv/cv.component";
 import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
+import { ListCvsComponent } from "./cv/list-cvs/list-cvs.component";
 
-const routes: Route[] = [
+const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'rh', component: RhComponent },
   {
     path: 'cv',
     component: CvComponent,
+  },
+  {
+    path: 'cv/list',
+    component: ListCvsComponent,
+    children: [
+      { path: ':id', component: DetailsCvComponent}
+    ]
   },
   { path: 'cv/add', component: AddCvComponent, canActivate: [authGuard] },
   { path: 'cv/:id', component: DetailsCvComponent },
