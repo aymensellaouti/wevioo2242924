@@ -54,7 +54,9 @@ import { CvService } from './cv/services/cv.service';
 import { CONSTANTES } from 'src/config/const.config';
 import { FakeCvService } from './cv/services/fake-cv.service';
 import { OtherLoggerService } from './services/other-logger.service';
-
+import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
+import {v4 as uuidv4} from 'uuid';
+import { uuidInjectionToken } from './injection Tokens/uuid.injection-token';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,6 +94,7 @@ import { OtherLoggerService } from './services/other-logger.service';
     RhComponent,
     UserListComponent,
     ProductsComponent,
+    WeekTodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +105,14 @@ import { OtherLoggerService } from './services/other-logger.service';
     HttpClientModule,
   ],
   providers: [
+    // {
+         // useFactory => kifech tesna3 el dependance
+    //   useFactory: todoServiceProviderFactory,
+        // kifech t3ayet lel dependance
+    //   provide: todoInjectionToken,
+      // chneya les dépendances eli iest7a9hom el factory bech iesna3 el dependance
+    //   deps: [LoggerService, uuidInjectionToken]
+    // },
     {
       provide: CvService,
       useClass: CONSTANTES.env == 'production' ? CvService : FakeCvService
@@ -117,6 +128,10 @@ import { OtherLoggerService } from './services/other-logger.service';
       useClass: OtherLoggerService,
       multi: true
     },
+    {
+      provide: uuidInjectionToken,
+      useValue: uuidv4
+    }
   ],
   bootstrap: [AppComponent],
 })

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { LoggerService } from '../../services/logger.service';
+import { uuidInjectionToken } from 'src/app/injection Tokens/uuid.injection-token';
 
 let n = 1;
 
@@ -9,7 +10,9 @@ let n = 1;
 })
 export class TodoService {
   private todos: Todo[] = [];
-  constructor(private loggerService: LoggerService) {}
+  private loggerService = inject(LoggerService);
+  private uuid = inject(uuidInjectionToken);
+  constructor() {} // Jibli el dépendance eli esmha uuidInjectionToken
 
   /**
    * elle retourne la liste des todos
@@ -27,6 +30,7 @@ export class TodoService {
    *
    */
   addTodo(todo: Todo): void {
+    todo.id = this.uuid();
     this.todos.push(todo);
   }
 
