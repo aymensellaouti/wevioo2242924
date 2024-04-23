@@ -22,4 +22,8 @@ export class TodoComponent {
   deleteTodo(todo: Todo) {
     this.todoService.deleteTodo(todo);
   }
+// false, null, 0, NaN, -0, undefined, ""
+  canLeave(): boolean {
+    return !this.todo.name.trim() && !this.todo.content.trim();
+  }
 }

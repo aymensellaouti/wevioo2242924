@@ -14,6 +14,7 @@ import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { ListCvsComponent } from "./cv/list-cvs/list-cvs.component";
 import { listCvsResolver } from "./cv/resolvers/list-cvs.resolver";
+import { canLeaveGuard } from "./common/can-leave.guard";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [
     path: '',
     component: FrontComponent,
     children: [
-      { path: 'todo', component: TodoComponent },
+      { path: 'todo', component: TodoComponent, canDeactivate: [canLeaveGuard] },
       { path: 'word', component: MiniWordComponent },
     ],
   },

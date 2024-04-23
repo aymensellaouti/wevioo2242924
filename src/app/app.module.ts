@@ -58,6 +58,8 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import {v4 as uuidv4} from 'uuid';
 import { uuidInjectionToken } from './injection Tokens/uuid.injection-token';
 import { ListCvsComponent } from './cv/list-cvs/list-cvs.component';
+import { FromOfComponent } from './rxjs/from-of/from-of.component';
+import { SliderComponent } from './rxjs/slider/slider.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +99,8 @@ import { ListCvsComponent } from './cv/list-cvs/list-cvs.component';
     ProductsComponent,
     WeekTodoComponent,
     ListCvsComponent,
+    FromOfComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
