@@ -19,9 +19,9 @@ export class SliderComponent {
   ];
   paths$ = timer(0, 1000).pipe(
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ...
-    tap((data) => console.log(data)),
+    tap((data) => console.log('after timer : '+data)),
     map((index) => this.paths[index % this.paths.length]),
-    tap((data) => console.log(data)),
+    tap((data) => console.log('after map : '+data)),
     startWith(this.paths[this.paths.length - 1])
 
     //'as.jpg',  'cv.png','rotating_card_profile.png',

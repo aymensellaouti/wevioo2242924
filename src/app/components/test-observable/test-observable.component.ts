@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Observable, Subscription, filter, map } from 'rxjs';
+import { Observable, Subscription, filter, map, take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -33,7 +33,9 @@ export class TestObservableComponent implements OnDestroy {
           // 5 4 3 2 1
           map((element) => element * 3),
           // 15 12 9 6 3
-          // filter((element) => element % 2 == 0)
+          filter((element) => element % 2 == 0),
+          // 12 6,
+          take(1)
         )
         .subscribe({
           next: (value) => this.toaster.info('' + value),
