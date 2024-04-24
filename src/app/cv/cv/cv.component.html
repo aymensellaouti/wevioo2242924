@@ -4,9 +4,16 @@
       {{ date | date : "full" | uppercase }}
     </div>
     <app-list  [cvs]="cvs$ | async"></app-list>
+
+    <h2>Juniors</h2>
+    <app-list [cvs]="cvJuniors$ | async"/>
+
+    <h2>Seniors</h2>
+    <app-list [cvs]="cvSeniors$ | async"/>
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv$ | async"></app-cv-card>
   </div>
+
 </div>
 <app-embauche></app-embauche>

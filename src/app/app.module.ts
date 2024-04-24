@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -60,6 +60,7 @@ import { uuidInjectionToken } from './injection Tokens/uuid.injection-token';
 import { ListCvsComponent } from './cv/list-cvs/list-cvs.component';
 import { FromOfComponent } from './rxjs/from-of/from-of.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
+import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,6 +102,7 @@ import { SliderComponent } from './rxjs/slider/slider.component';
     ListCvsComponent,
     FromOfComponent,
     SliderComponent,
+    AutocmpleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +111,7 @@ import { SliderComponent } from './rxjs/slider/slider.component';
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     // {
