@@ -30,9 +30,26 @@ export class AddCvComponent {
       firstname: ['', [Validators.required, Validators.minLength(4)]],
       job: ['', Validators.required],
       path: [''],
-      age: ['', Validators.required],
+      age: [
+        '',
+        {
+          validators: Validators.required,
+          updateOn: 'blur',
+        },
+      ],
       cin: ['', Validators.required],
     });
+
+    this.age.valueChanges.subscribe({
+      next: (age) => {
+        if(age < 18) {
+          this.path.disable();
+        }
+        else {
+          this.path.enable();
+        }
+      }
+    })
   }
 
   get name() {
