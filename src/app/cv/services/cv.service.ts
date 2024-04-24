@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
-import {  Observable } from 'rxjs';
+import {  Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../../../config/api.config';
 
@@ -9,6 +9,10 @@ import { API } from '../../../config/api.config';
 })
 export class CvService {
   private cvs: Cv[] = [];
+  private selectCvSubject = new Subject<Cv>();
+  // Le flux des cvs séléctionnés, toute personne interessé
+  // n'a qu'à s'inscrire
+  selectCv$ = this.selectCvSubject.asObservable();
   constructor(private http: HttpClient) {
     this.cvs = [
       new Cv(1, 'aymen', 'sellaouti', 'teacher', 'as.jpg', '1234', 40),
@@ -91,6 +95,16 @@ export class CvService {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Méthode qui notifie toute personne inscrite au flux
+   * des cvs sélectionnés de l'arrivé d'un nouveau Cv
+   * @param cv : C'estr le cv séléctionné
+   */
+  selectCv(cv: Cv): void {
+    // Rahou fama cv jdid clikaw 3lih
+    this.selectCvSubject.next(cv);
   }
 
 }

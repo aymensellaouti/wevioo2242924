@@ -24,7 +24,7 @@ export class CvComponent {
         },
     )
   );
-  selectedCv: Cv | null = null;
+  selectedCv$: Observable<Cv> = this.cvService.selectCv$;
   /*   selectedCv: Cv | null = null; */
   date = new Date();
 
@@ -45,9 +45,5 @@ export class CvComponent {
     //       Veuillez contacter l'admin.`);
     //   },
     // });
-  }
-  onForwardCv(cv: Cv) {
-    this.todoService.logTodos();
-    this.selectedCv = cv;
   }
 }
