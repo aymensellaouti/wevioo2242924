@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
 import {  Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { API } from '../../../config/api.config';
 
 @Injectable({
@@ -98,6 +98,28 @@ export class CvService {
   }
 
   /**
+   * Recherche les cvs dont le name contient la chaine name passée en paramètre
+   * @param name : string
+   * @returns cvs Cv[]
+   */
+  selectByName(name: string) {
+    const search = `{"where":{"name":{"like":"%${name}%"}}}`;
+    const params = new HttpParams().set('filter', search);
+    return this.http.get<any>(API.cv, { params });
+  }
+  /**
+   * Recherche les cvs dont la valeur est égale à la chaine passée en paramètre
+   * @param property : string, la propriété sur laquelle on va requeter
+   * @param value : string, la valeur de la propriété sur laquelle on va requeter
+   * @returns cvs Cv[]
+   */
+  selectByProperty(property: string, value: string) {
+    const search = `{"where":{"${property}":"${value}"}}`;
+    const params = new HttpParams().set('filter', search);
+    return this.http.get<Cv[]>(API.cv, { params });
+  }
+
+  /**
    * Méthode qui notifie toute personne inscrite au flux
    * des cvs sélectionnés de l'arrivé d'un nouveau Cv
    * @param cv : C'estr le cv séléctionné
@@ -106,5 +128,4 @@ export class CvService {
     // Rahou fama cv jdid clikaw 3lih
     this.selectCvSubject.next(cv);
   }
-
 }
