@@ -10,5 +10,5 @@ export class ListComponent {
   @Input({
     required: true,
   }) cvs: Cv[] | null = [];
-  @Output() forwardCv = new EventEmitter<Cv>();
+  // @Output() forwardCv = new EventEmitter<Cv>();
 }
