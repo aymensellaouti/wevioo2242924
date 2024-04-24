@@ -15,6 +15,7 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { ListCvsComponent } from "./cv/list-cvs/list-cvs.component";
 import { listCvsResolver } from "./cv/resolvers/list-cvs.resolver";
 import { canLeaveGuard } from "./common/can-leave.guard";
+import { ProductsComponent } from "./products/products.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
     children: [
       { path: 'todo', component: TodoComponent, canDeactivate: [canLeaveGuard] },
       { path: 'word', component: MiniWordComponent },
+      { path: 'products', component: ProductsComponent },
     ],
   },
   {

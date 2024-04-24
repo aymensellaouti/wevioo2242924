@@ -26,17 +26,23 @@ export class AuthService {
     }
   }
 
-  login(credentials: CredentialsDto): Observable<LoginResponseDto> {
+  login(credentials: CredentialsDto): Observable<User> {
     return this.http.post<LoginResponseDto>(API.login, credentials).pipe(
       tap((response: LoginResponseDto) => {
         const user: User = {
-          id: ''+response.userId,
+          id: '' + response.userId,
           email: credentials.email,
-        }
+        };
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', response.id);
         this.userSubject.next(user);
-      })
+      }),
+      map((response: LoginResponseDto) => {
+        // For testing purposes only
+        return{
+          id: '' + response.userId,
+          email: credentials.email,
+        };})
     );
   }
 

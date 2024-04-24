@@ -4,6 +4,7 @@ import { CredentialsDto } from '../dto/credentials.dto';
 import { ROUTES, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from '../../../config/routes.config';
+import { EMPTY, catchError, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +18,16 @@ export class LoginComponent {
     private toastr: ToastrService
   ) {}
   login(credentials: CredentialsDto) {
-    this.authService.login(credentials).subscribe({
-      next: (response) => {
+    this.authService.login(credentials)
+    .pipe(
+      tap(() => {
         this.toastr.success(`Bienvenu chez vous :)`);
         this.router.navigate([APP_ROUTES.cv]);
-      },
-      error: (error) => {
+      }),
+      catchError((e) => {
         this.toastr.error('Veuillez vérifier vos credentials');
-      },
-    });
+        return EMPTY;
+      })
+    ).subscribe();
   }
 }
