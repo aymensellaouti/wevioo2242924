@@ -1,0 +1,7 @@
+<p>on-push works!</p>
+<app-push [name]="name" [user]="user"/>
+
+
+<input type="text" [(ngModel)]="name">
+<input #email type="text" (input)="updateEmail(email.value)">
+

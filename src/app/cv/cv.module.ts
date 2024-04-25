@@ -11,6 +11,7 @@ import { ListComponent } from './list/list.component';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CvRoutingModule } from '../cv-routing/cv-routing.module';
+import { AutocmpleteComponent } from '../rxjs/autocmplete/autocmplete.component';
 
 
 
@@ -25,6 +26,7 @@ import { CvRoutingModule } from '../cv-routing/cv-routing.module';
     EmbaucheComponent,
     DefaultImagePipe,
     ListCvsComponent,
+    AutocmpleteComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, CvRoutingModule],
 })

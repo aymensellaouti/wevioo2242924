@@ -10,19 +10,19 @@ import { listCvsResolver } from '../cv/resolvers/list-cvs.resolver';
 
 export const CV_ROUTES: Routes = [
   {
-    path: 'cv',
+    path: '',
     component: CvComponent,
   },
   {
-    path: 'cv/list',
+    path: 'list',
     component: ListCvsComponent,
     resolve: {
       cvs: listCvsResolver,
     },
     children: [{ path: ':id', component: DetailsCvComponent }],
   },
-  { path: 'cv/add', component: AddCvComponent, canActivate: [authGuard] },
-  { path: 'cv/:id', component: DetailsCvComponent },
+  { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
+  { path: ':id', component: DetailsCvComponent },
 ];
 
 @NgModule({

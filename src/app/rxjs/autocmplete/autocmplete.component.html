@@ -1,1 +1,6 @@
-<p>autocmplete works!</p>
+<form [formGroup]="form">
+
+  <input class="form-control" formControlName="name" type="text">
+
+  <app-list [cvs]="cvs$ | async"/>
+</form>

@@ -47,9 +47,10 @@ import {v4 as uuidv4} from 'uuid';
 import { uuidInjectionToken } from './injection Tokens/uuid.injection-token';
 import { FromOfComponent } from './rxjs/from-of/from-of.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
-import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
-import { TodoModule } from './todo/todo.module';
-import { CvModule } from './cv/cv.module';
+import { OnPushComponent } from './cd/on-push/on-push.component';
+import { PushComponent } from './cd/push/push.component';
+import { FiboPipe } from './optimizationPattern/fibo.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,9 @@ import { CvModule } from './cv/cv.module';
     ProductsComponent,
     FromOfComponent,
     SliderComponent,
-    AutocmpleteComponent,
+    OnPushComponent,
+    PushComponent,
+    FiboPipe,
   ],
   imports: [
     BrowserModule,
@@ -89,8 +92,7 @@ import { CvModule } from './cv/cv.module';
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    CvModule
+    ReactiveFormsModule
   ],
   providers: [
     // {
