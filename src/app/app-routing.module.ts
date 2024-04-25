@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Route, ROUTES, Routes } from "@angular/router";
-import { TodoComponent } from "./todo/todo/todo.component";
+import { RouterModule, Routes } from "@angular/router";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
 import { FrontComponent } from "./templates/front/front.component";
@@ -14,7 +13,6 @@ import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { ListCvsComponent } from "./cv/list-cvs/list-cvs.component";
 import { listCvsResolver } from "./cv/resolvers/list-cvs.resolver";
-import { canLeaveGuard } from "./common/can-leave.guard";
 import { ProductsComponent } from "./products/products.component";
 
 const routes: Routes = [
@@ -40,7 +38,6 @@ const routes: Routes = [
     path: '',
     component: FrontComponent,
     children: [
-      { path: 'todo', component: TodoComponent, canDeactivate: [canLeaveGuard] },
       { path: 'word', component: MiniWordComponent },
       { path: 'products', component: ProductsComponent },
     ],
@@ -50,7 +47,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [{ path: 'color', component: ColorComponent }],
   },
-  { path: '**', component: NF404Component },
+  // { path: '**', component: NF404Component },
 ];
 
 @NgModule({

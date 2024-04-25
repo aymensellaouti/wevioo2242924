@@ -22,7 +22,6 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { NgstyleComponent } from './directives/ngstyle/ngstyle.component';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { NgclassComponent } from './directives/ngclass/ngclass.component';
-import { TodoComponent } from './todo/todo/todo.component';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
@@ -54,13 +53,13 @@ import { CvService } from './cv/services/cv.service';
 import { CONSTANTES } from 'src/config/const.config';
 import { FakeCvService } from './cv/services/fake-cv.service';
 import { OtherLoggerService } from './services/other-logger.service';
-import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import {v4 as uuidv4} from 'uuid';
 import { uuidInjectionToken } from './injection Tokens/uuid.injection-token';
 import { ListCvsComponent } from './cv/list-cvs/list-cvs.component';
 import { FromOfComponent } from './rxjs/from-of/from-of.component';
 import { SliderComponent } from './rxjs/slider/slider.component';
 import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
+import { TodoModule } from './todo/todo.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +85,7 @@ import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
     HighlightDirective,
     RainbowDirective,
     Btc2usdPipe,
-    TodoComponent,
+
     NavbarComponent,
     FrontComponent,
     AdminComponent,
@@ -98,7 +97,6 @@ import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
     RhComponent,
     UserListComponent,
     ProductsComponent,
-    WeekTodoComponent,
     ListCvsComponent,
     FromOfComponent,
     SliderComponent,
@@ -111,7 +109,8 @@ import { AutocmpleteComponent } from './rxjs/autocmplete/autocmplete.component';
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TodoModule
   ],
   providers: [
     // {
