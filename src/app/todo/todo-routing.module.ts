@@ -5,7 +5,7 @@ import { canLeaveGuard } from "../common/can-leave.guard";
 
 
 const TODO_ROUTES: Routes = [
-  { path: 'todo', component: TodoComponent, canDeactivate: [canLeaveGuard] },
+  { path: '', component: TodoComponent, canDeactivate: [canLeaveGuard] },
 ];
 
 @NgModule({
