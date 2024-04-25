@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from 'src/config/routes.config';
 import { filter, tap } from 'rxjs';
+import { cinExistInCv } from 'src/app/async Validators/unique-cin.validators';
 
 @Component({
   selector: 'app-add-cv',
@@ -38,7 +39,14 @@ export class AddCvComponent implements OnDestroy{
           updateOn: 'blur',
         },
       ],
-      cin: ['', Validators.required],
+      cin: [
+        '',
+        {
+          validators: [Validators.required],
+          asyncValidators: [cinExistInCv(cvService)],
+          updateOn: 'blur',
+        },
+      ],
     });
 
     this.age.
